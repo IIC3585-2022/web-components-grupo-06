@@ -194,7 +194,7 @@ template.innerHTML = `
                 <p class="precio precioOferta">9,999</p>
                 <p class="precio precioProd">9,999</p>
             </div>
-            <div class="icono action aFavs">
+            <div class="icono action aFavs" id="fav">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                 <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z">
                 </path>
@@ -227,7 +227,7 @@ class ProductCard extends HTMLElement {
   constructor() {
     super();
 
-    this.showInfo = true;
+    this.fav = false;
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -239,25 +239,18 @@ class ProductCard extends HTMLElement {
     this.shadowRoot.querySelector('.precioProd').innerText = this.getAttribute('precioProd');
   }
 
-  toggleInfo() {
-    this.showInfo = !this.showInfo;
-
-    const div = this.shadowRoot.querySelector('.card')
-    console.log(div)
-    const eleInfo = this.shadowRoot.querySelector('.card__information');
-    div.classList.toggle('card--active');
-    if (!div.classList.contains('card--active'))
-        eleInfo.classList.toggle('card__information--collapse')
-    else
-        setTimeout(() => eleInfo.classList.toggle('card__information--collapse'), 270);
+  makeFav() {
+    const div = this.shadowRoot.querySelector('.card');
+    div.classList.toggle('esFav');
+    this.fav = !this.fav;
   }
 
   connectedCallback() {
-    this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
+    this.shadowRoot.querySelector('#fav').addEventListener('click', () => this.makeFav());
   }
 
   disconnectedCallback() {
-    this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    this.shadowRoot.querySelector('#fav').removeEventListener();
   }
 }
 
