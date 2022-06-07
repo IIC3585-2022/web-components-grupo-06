@@ -5,23 +5,58 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Web componens example</title>
         <style>
-            h3 { 
-                color: purple;
+            .contenedorCards {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                align-content: center;
+                min-height: 100vh;
+                padding: 20px 0;
+                box-sizing: border-box;
             }
         </style>
     </head>
     <body>
-        <h3>
-            Hello, world
-        </h3>
-        <user-card name="John Doe" avatar="https://randomuser.me/api/portraits/men/1.jpg">
-            <div slot="email">johndoe@gmail.com</div>
-            <div slot="phone">555-555-5555</div>
-          </user-card>
-          <user-card name="Jane Doe" avatar="https://randomuser.me/api/portraits/women/1.jpg">
-            <div slot="email">janedoe@gmail.com</div>
-            <div slot="phone">333-333-3333</div>
-          </user-card>
-        <script src="user-card.js"></script>
+        <div class="contenedorCards">
+            <product-card
+            colorProd=""
+            imgProd="https://firebasestorage.googleapis.com/v0/b/fotos-3cba1.appspot.com/o/batman.png?alt=media&token=bcce964a-7224-4e47-b619-265e93b5311e"
+            nombreProd="ARTFX DC UNIVERSE Batman HUSH Renewal Package"
+            extraInfo="Fecha de salida: 31/03/2021"
+            precioAnterior="19.000"
+            precioProd="9.000"
+            >
+            </product-card>
+            <product-card
+            colorProd="#1d1d1d"
+            imgProd="https://firebasestorage.googleapis.com/v0/b/fotos-3cba1.appspot.com/o/blackpanter.png?alt=media&token=de5d3491-e31f-4d91-aa3d-1eb15827d954"
+            nombreProd="Mafex No.091 MAFEX BLACK PANTHER"
+            extraInfo="Fecha de salida: 31/03/2021"
+            precioAnterior="21.799"
+            precioProd="2.799"
+            >
+            </product-card>
+            <product-card
+            colorProd="#153a82"
+            imgProd="https://firebasestorage.googleapis.com/v0/b/fotos-3cba1.appspot.com/o/arthur.png?alt=media&token=7e0f09e6-1369-42c5-9c98-af99946fae72"
+            nombreProd="Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension"
+            extraInfo="Fecha de salida: 31/03/2021"
+            precioAnterior="11.799"
+            precioProd="1.999"
+            >
+            </product-card>
+            <product-card
+            colorProd="#3f4a69"
+            imgProd="https://firebasestorage.googleapis.com/v0/b/fotos-3cba1.appspot.com/o/kashima.png?alt=media&token=ffed0174-7dbe-4b61-bd42-05608a3a3090"
+            nombreProd="figma Kantai Collection -Kan Colle- Kashima"
+            extraInfo="Fecha de salida: 31/03/2021"
+            precioAnterior="12.799"
+            precioProd="9.999"
+            >
+            </product-card>
+        </div>
+        <script src="productCard.js"></script>
     </body>
 </html>
