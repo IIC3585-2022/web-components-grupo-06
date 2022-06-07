@@ -180,6 +180,24 @@ template.innerHTML = `
     .contenedorCards .card .wrapper .infoProd .actions .action.alCarrito svg.inCart {
         transform: scale(0);
     }
+    .discount {
+        background-color: red;
+        width: 40px;
+        height: 20px;
+        margin-left: auto;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+    }
+    .star {
+        display: flex;
+        flex-direction: row;
+    }
+    .rating {
+        margin-left: 0px;
+        width: 10% !important;
+        margin-top: -2px;
+    }
   </style>
 <div class="contenedorCards">
   <div class="card">
@@ -192,6 +210,11 @@ template.innerHTML = `
             <div class="actions">
             <div class="preciosGrupo">
                 <p class="precio precioOferta">9,999</p>
+                <div class="discount"></div>
+                <div class="star">
+                    <img src="star.png" style="width: 10px;height: 10px;"></img>
+                    <p class="rating"> </p>
+                <div/>
                 <p class="precio precioProd">9,999</p>
             </div>
             <div class="icono action aFavs" id="fav">
@@ -238,6 +261,9 @@ class ProductCard extends HTMLElement {
     this.shadowRoot.querySelector('.extraInfo').innerText = this.getAttribute('extraInfo');
     this.shadowRoot.querySelector('.precioOferta').innerText = this.getAttribute('precioAnterior');
     this.shadowRoot.querySelector('.precioProd').innerText = this.getAttribute('precioProd');
+    this.shadowRoot.querySelector('.discount').style = `background-color: ${this.getAttribute('colorProd')};`;
+    this.shadowRoot.querySelector('.discount').innerText = `-${this.getAttribute('descuento')}%`;
+    this.shadowRoot.querySelector('.rating').innerText = `${this.getAttribute('rating')}`;
   }
 
   makeFav() {
