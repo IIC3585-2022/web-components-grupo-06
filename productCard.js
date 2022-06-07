@@ -200,7 +200,7 @@ template.innerHTML = `
                 </path>
                 </svg>
             </div>
-            <div class="icono action alCarrito">
+            <div class="icono action alCarrito" id="carrito">
                 <svg class="inCart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                 <title>Quitar del carrito</title>
                 <path d="M30 22H12M2 6h6l10 40h32l3.2-9.7"></path>
@@ -228,6 +228,7 @@ class ProductCard extends HTMLElement {
     super();
 
     this.fav = false;
+    this.enCarrito = false;
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -245,12 +246,20 @@ class ProductCard extends HTMLElement {
     this.fav = !this.fav;
   }
 
+  toCarrito() {
+    const div = this.shadowRoot.querySelector('.card');
+    div.classList.toggle('enCarrito');
+    this.enCarrito = !this.enCarrito;
+  }
+
   connectedCallback() {
     this.shadowRoot.querySelector('#fav').addEventListener('click', () => this.makeFav());
+    this.shadowRoot.querySelector('#carrito').addEventListener('click', () => this.toCarrito());
   }
 
   disconnectedCallback() {
     this.shadowRoot.querySelector('#fav').removeEventListener();
+    this.shadowRoot.querySelector('#carrito').removeEventListener();
   }
 }
 
