@@ -289,4 +289,4 @@ class ProductCard extends HTMLElement {
   }
 }
 
-window.customElements.define('product-card', ProductCard);
+window.customElements.define('sell-item', ProductCard);
