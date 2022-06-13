@@ -15,5 +15,7 @@
   },
   "dependencies": {
     "lit": "^2.2.5"
-  }
+  },
+  "type": "module"
+
 }
