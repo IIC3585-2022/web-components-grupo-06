@@ -99,17 +99,27 @@ class ToDoList extends HTMLElement {
 			this.counter += 1;
 			console.log(this.counter);
 			var att = this.attributes[i];
+			var this_comp = this;
 			if (att.name.includes("item")) {
-				var row = table.insertRow();
-				row.insertCell(0).innerHTML = att.value;
-				row.insertCell(
-					1
-				).innerHTML = `<button class="btn btn-delete" id =${this.counter} name=${att.name} type="button" ><span class="mdi mdi-delete mdi-24px"></span>
-            <span>Delete</span></button>`;
+				table.innerHTML += `
+                <tr>
+                    <td>Cocinar</td>
+                    <td id="${this_comp.counter}>
+                    </td>
+                    </tr>
+                    
+                    `;
+
+				console.log(
+					this.shadowRoot.querySelector(`[id="${this_comp.counter}"]`)
+				);
+				var td = this.shadowRoot.querySelector(`[id="${this_comp.counter}"]`);
+				td.innerHTML = `<button class="btn btn-delete" ids =${this.counter} name=${att.name} type="button" ><span class="mdi mdi-delete mdi-24px"></span>
+                    <span>Delete</span></button>`;
 				var this_comp = this;
 				console.log(this_comp);
 				console.log(
-					this.shadowRoot.querySelector(`[id="${this_comp.counter}"]`)
+					this.shadowRoot.querySelector(`[ids="${this_comp.counter}"]`)
 				);
 				this.shadowRoot
 					.querySelector(`[id="${this_comp.counter}"]`)
