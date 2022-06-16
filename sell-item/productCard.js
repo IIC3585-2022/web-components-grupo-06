@@ -1,4 +1,4 @@
-const template = document.createElement('template');
+const template = document.createElement("template");
 template.innerHTML = `
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@300;400;900&display=swap');
@@ -12,53 +12,55 @@ template.innerHTML = `
         transition: ease all 0.3s;
     }
     body * {
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: "Roboto Condensed", sans-serif;
     }
-    body p, body h1, body h2, body h3, body h4, body h5, body h6 {
+    body p,
+    body h1,
+    body h2,
+    body h3,
+    body h4,
+    body h5,
+    body h6 {
         margin: 0;
     }
     body a {
         color: #666;
         text-decoration: none;
     }
-    body ul, body li {
+    body ul,
+    body li {
         padding: 0;
         margin: 0;
         list-style-type: none;
     }
-    
-    .contenedorCards .card {
+
+    .wrapper {
+        height: 500px;
+    }
+
+    .contenedor-card .card {
         width: 300px;
         transition: ease all 0.3s;
     }
-    .contenedorCards .card.esFav .wrapper .infoProd .actions .action.aFavs {
+    .contenedor-card .card.esFav .wrapper .info-prod .actions .action.aFavs {
         transform: rotateX(360deg) scale(1.2);
     }
-    .contenedorCards .card.esFav .wrapper .infoProd .actions .action.aFavs svg path, .contenedorCards .card.esFav .wrapper .infoProd .actions .action.aFavs svg circle {
-        fill: #fff;
-        transition-delay: 0.2s;
-    }
-    .contenedorCards .card.enCarrito .wrapper .infoProd .actions .action.alCarrito .inCart {
-        transform: scale(1);
-    }
-    .contenedorCards .card.enCarrito .wrapper .infoProd .actions .action.alCarrito .outCart {
-        transform: scale(0);
-    }
-    .contenedorCards .card .wrapper {
+
+    .contenedor-card .card .wrapper {
         margin: 60px 10px 10px 10px;
         padding-top: 300px;
         box-sizing: border-box;
         position: relative;
-        box-shadow: 0 0 20px 10px rgba(29, 29, 29, .1);
+        box-shadow: 0 0 20px 10px rgba(29, 29, 29, 0.1);
         transition: ease all 0.3s;
     }
-    .contenedorCards .card .wrapper:hover {
+    .contenedor-card .card .wrapper:hover {
         transform: translateY(-10px);
     }
-    .contenedorCards .card .wrapper:hover .imgProd {
+    .contenedor-card .card .wrapper:hover .img-prod {
         height: 350px;
     }
-    .contenedorCards .card .wrapper .colorProd {
+    .contenedor-card .card .wrapper .color-prod {
         display: block;
         position: absolute;
         top: 0;
@@ -67,7 +69,7 @@ template.innerHTML = `
         height: 200px;
         background-color: #b82d44;
     }
-    .contenedorCards .card .wrapper .imgProd {
+    .contenedor-card .card .wrapper .img-prod {
         background-size: contain;
         background-position: center bottom;
         background-repeat: no-repeat;
@@ -77,7 +79,7 @@ template.innerHTML = `
         height: 300px;
         transition: ease all 0.3s;
     }
-    .contenedorCards .card .wrapper .infoProd {
+    .contenedor-card .card .wrapper .info-prod {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -88,12 +90,12 @@ template.innerHTML = `
         padding: 20px;
         box-sizing: border-box;
     }
-    .contenedorCards .card .wrapper .infoProd p {
+    .contenedor-card .card .wrapper .info-prod {
         width: 100%;
         font-size: 14px;
         text-align: center;
     }
-    .contenedorCards .card .wrapper .infoProd .nombreProd {
+    .contenedor-card .card .wrapper .info-prod .nombre-prod {
         font-family: "Roboto", sans-serif;
         margin-bottom: 10px;
         font-size: 16px;
@@ -103,11 +105,11 @@ template.innerHTML = `
         text-overflow: ellipsis;
         display: -webkit-box;
     }
-    .contenedorCards .card .wrapper .infoProd .extraInfo {
+    .contenedor-card .card .wrapper .info-prod .extraInfo {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .contenedorCards .card .wrapper .infoProd .actions {
+    .contenedor-card .card .wrapper .info-prod .actions {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -118,18 +120,30 @@ template.innerHTML = `
         margin-top: auto;
         padding-top: 10px;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .preciosGrupo {
+    .contenedor-card .card .wrapper .info-prod .actions .precios-grupo {
         flex-grow: 1;
         position: relative;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .preciosGrupo .precio {
+    .contenedor-card
+        .card
+        .wrapper
+        .info-prod
+        .actions
+        .precios-grupo
+        .precio {
         font-family: "Roboto", sans-serif;
         color: #1d1d1d;
         font-size: 25px;
         font-weight: 600;
         text-align: left;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .preciosGrupo .precio.precioOferta {
+    .contenedor-card
+        .card
+        .wrapper
+        .info-prod
+        .actions
+        .precios-grupo
+        .precio.precio-oferta {
         position: absolute;
         left: 0;
         top: -15px;
@@ -137,14 +151,26 @@ template.innerHTML = `
         font-size: 15px;
         text-decoration: line-through;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .preciosGrupo .precio.precioOferta:before {
+    .contenedor-card
+        .card
+        .wrapper
+        .info-prod
+        .actions
+        .precios-grupo
+        .precio.precio-oferta:before {
         font-size: 12px;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .preciosGrupo .precio:before {
+    .contenedor-card
+        .card
+        .wrapper
+        .info-prod
+        .actions
+        .precios-grupo
+        .precio:before {
         content: "$";
         font-size: 20px;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .action {
+    .contenedor-card .card .wrapper .info-prod .actions .action {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -159,16 +185,17 @@ template.innerHTML = `
         cursor: pointer;
         color: #1d1d1d;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .action svg {
+    .contenedor-card .card .wrapper .info-prod .actions .action svg {
         position: absolute;
         transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all 0.3s;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .action svg path, .contenedorCards .card .wrapper .infoProd .actions .action svg circle {
+    .contenedor-card .card .wrapper .info-prod .actions .action svg path,
+    .contenedor-card .card .wrapper .info-prod .actions .action svg circle {
         stroke: currentColor;
         fill: transparent;
         transition: ease all 0.3s;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .action.aFavs {
+    .contenedor-card .card .wrapper .info-prod .actions .action.aFavs {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -177,9 +204,7 @@ template.innerHTML = `
         height: 25px;
         color: #fff;
     }
-    .contenedorCards .card .wrapper .infoProd .actions .action.alCarrito svg.inCart {
-        transform: scale(0);
-    }
+
     .discount {
         background-color: red;
         width: 40px;
@@ -189,104 +214,184 @@ template.innerHTML = `
         color: white;
         text-align: center;
     }
+    .discount::before {
+        content: "-";
+    }
+
+    .discount::after {
+        content: "%";
+    }
     .star {
         display: flex;
         flex-direction: row;
+        align-items: center;
     }
     .rating {
         margin-left: 0px;
-        width: 10% !important;
-        margin-top: -2px;
+        width: 5%;
+        margin-right: 20px;
+    }
+    .star-img {
+        width: 10px;
+        height: 10px;
+    }
+
+    .precio-actual ::before {
+        content: "$";
+    }
+
+    .precio-actual {
+        font-size: 20px;
+        font-weight: bold;
+        width: 100px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .heart {
+        width: 25px;
+        height: 25px;
+        margin-left: 20px;
+    }
+
+    .icono-favorito {
+        cursor: pointer;
     }
   </style>
-<div class="contenedorCards">
+  <div class="contenedor-card">
   <div class="card">
-        <div class="wrapper">
-        <div class="colorProd"></div>
-        <div class="imgProd"></div>
-        <div class="infoProd">
-            <p class="nombreProd"></p>
-            <p class="extraInfo"></p>
-            <div class="actions">
-            <div class="preciosGrupo">
-                <p class="precio precioOferta">9,999</p>
-                <div class="discount"></div>
-                <div class="star">
-                    <img src="star.png" style="width: 10px;height: 10px;"></img>
-                    <p class="rating"> </p>
-                <div/>
-                <p class="precio precioProd">9,999</p>
-            </div>
-            <div class="icono action aFavs" id="fav">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z">
-                </path>
-                </svg>
-            </div>
-            <div class="icono action alCarrito" id="carrito">
-                <svg class="inCart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                <title>Quitar del carrito</title>
-                <path d="M30 22H12M2 6h6l10 40h32l3.2-9.7"></path>
-                <circle cx="20" cy="54" r="4"></circle>
-                <circle cx="46" cy="54" r="4"></circle>
-                <circle cx="46" cy="22" r="16"></circle>
-                <path d="M53 18l-8 9-5-5"></path>
-                </svg>
-                <svg class="outCart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                <title>Agregar al carrito</title>
-                <path d="M2 6h10l10 40h32l8-24H16"></path>
-                <circle cx="23" cy="54" r="4"></circle>
-                <circle cx="49" cy="54" r="4"></circle>
-                </svg>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-`;
+      <div class="wrapper">
+          <div class="color-prod"></div>
+          <div
+              class="img-prod"
+          ></div>
+          <div class="info-prod">
+              <p class="nombre-prod">${this.nombreProd}</p>
+              <p class="extra-info">${this.extraInfo}</p>
+
+              <div class="actions">
+                  <div class="precios-grupo">
+                      <p class="precio precio-oferta">
+                          ${this.precioAnterior}
+                      </p>
+                      <div class="discount">${this.descuento}</div>
+                      <div class="star">
+                          <img class="star-img" src="../assets/star.png" />
+                          <p class="rating">${this.rating}</p>
+                          <div class="precio-actual precio-prod">
+                          </div>
+
+                          <div
+                              @click=${this.inCartBtnHandler}
+                              class="icono action icono-carrito"
+                              id="carrito"
+                          >
+                              <svg
+                                  class="in-cart hidden"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 64 64"
+                              >
+                                  <title>Quitar del carrito</title>
+                                  <path d="M30 22H12M2 6h6l10 40h32l3.2-9.7"></path>
+                                  <circle cx="20" cy="54" r="4"></circle>
+                                  <circle cx="46" cy="54" r="4"></circle>
+                                  <circle cx="46" cy="22" r="16"></circle>
+                                  <path d="M53 18l-8 9-5-5"></path>
+                              </svg>
+                              <svg
+                                  class="out-cart"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 64 64"
+                              >
+                                  <title>Agregar al carrito</title>
+                                  <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                  <circle cx="23" cy="54" r="4"></circle>
+                                  <circle cx="49" cy="54" r="4"></circle>
+                              </svg>
+                          </div>
+                          <div @click=${this.favBtnHandler} class="icono-favorito">
+                              <img
+                                  class="heart black-heart"
+                                  src="../assets/black_heart.png"
+                              />
+                              <img
+                                  class="heart red-heart hidden"
+                                  src="../assets/red_heart.png"
+                              />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>`;
 
 class ProductCard extends HTMLElement {
-  constructor() {
-    super();
+	constructor() {
+		super();
 
-    this.fav = false;
-    this.enCarrito = false;
+		this.fav = false;
+		this.enCarrito = false;
 
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    this.shadowRoot.querySelector('.colorProd').style = `background-color: ${this.getAttribute('colorProd')};`;
-    this.shadowRoot.querySelector('.imgProd').style = `background-image: url(${this.getAttribute('imgProd')});`;
-    this.shadowRoot.querySelector('.nombreProd').innerText = this.getAttribute('nombreProd');
-    this.shadowRoot.querySelector('.extraInfo').innerText = this.getAttribute('extraInfo');
-    this.shadowRoot.querySelector('.precioOferta').innerText = this.getAttribute('precioAnterior');
-    this.shadowRoot.querySelector('.precioProd').innerText = this.getAttribute('precioProd');
-    this.shadowRoot.querySelector('.discount').style = `background-color: ${this.getAttribute('colorProd')};`;
-    this.shadowRoot.querySelector('.discount').innerText = `-${this.getAttribute('descuento')}%`;
-    this.shadowRoot.querySelector('.rating').innerText = `${this.getAttribute('rating')}`;
-  }
+		this.attachShadow({ mode: "open" });
+		this.shadowRoot.appendChild(template.content.cloneNode(true));
+		this.shadowRoot.querySelector(
+			".color-prod"
+		).style = `background-color: ${this.getAttribute("color-prod")};`;
+		this.shadowRoot.querySelector(
+			".img-prod"
+		).style = `background-image: url(${this.getAttribute("img-prod")});`;
+		this.shadowRoot.querySelector(".nombre-prod").innerText = this.getAttribute(
+			"nombre-prod"
+		);
+		this.shadowRoot.querySelector(".extra-info").innerText = this.getAttribute(
+			"extra-info"
+		);
+		this.shadowRoot.querySelector(
+			".precio-oferta"
+		).innerText = this.getAttribute("precio-anterior");
+		this.shadowRoot.querySelector(".precio-prod").innerText = this.getAttribute(
+			"precio-prod"
+		);
+		this.shadowRoot.querySelector(
+			".discount"
+		).style = `background-color: ${this.getAttribute("color-prod")};`;
+		this.shadowRoot.querySelector(".discount").innerText = `${this.getAttribute(
+			"descuento"
+		)}`;
+		this.shadowRoot.querySelector(".rating").innerText = `${this.getAttribute(
+			"rating"
+		)}`;
+	}
 
-  makeFav() {
-    const div = this.shadowRoot.querySelector('.card');
-    div.classList.toggle('esFav');
-    this.fav = !this.fav;
-  }
+	favBtnHandler() {
+		this.shadowRoot.querySelector(".black-heart").classList.toggle("hidden");
+		this.shadowRoot.querySelector(".red-heart").classList.toggle("hidden");
+		this.isFav = !this.isFav;
+	}
 
-  toCarrito() {
-    const div = this.shadowRoot.querySelector('.card');
-    div.classList.toggle('enCarrito');
-    this.enCarrito = !this.enCarrito;
-  }
+	inCartBtnHandler() {
+		this.shadowRoot.querySelector(".in-cart").classList.toggle("hidden");
+		this.shadowRoot.querySelector(".out-cart").classList.toggle("hidden");
+		this.inCart = !this.inCart;
+	}
 
-  connectedCallback() {
-    this.shadowRoot.querySelector('#fav').addEventListener('click', () => this.makeFav());
-    this.shadowRoot.querySelector('#carrito').addEventListener('click', () => this.toCarrito());
-  }
+	connectedCallback() {
+		this.shadowRoot
+			.querySelector(".icono-favorito")
+			.addEventListener("click", () => this.favBtnHandler());
+		this.shadowRoot
+			.querySelector(".icono-carrito")
+			.addEventListener("click", () => this.inCartBtnHandler());
+	}
 
-  disconnectedCallback() {
-    this.shadowRoot.querySelector('#fav').removeEventListener();
-    this.shadowRoot.querySelector('#carrito').removeEventListener();
-  }
+	disconnectedCallback() {
+		this.shadowRoot.querySelector("#fav").removeEventListener();
+		this.shadowRoot.querySelector("#carrito").removeEventListener();
+	}
 }
 
-window.customElements.define('sell-item', ProductCard);
+window.customElements.define("sell-item", ProductCard);
