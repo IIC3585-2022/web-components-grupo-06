@@ -136,13 +136,13 @@ p1 .x-tasks,
 </style>
 
 <div class="title-div">
-        <h1 class="title"></h1>
-    </div>
+    <h1 class="title"></h1>
+</div>
 
 <div class="todo-table">
-    <div class="head-row flex-row";">
-        <h2 class="head-div tasks-div"></p2>
-        <h4 class="head-div remaining-div"></h4>
+    <div class="head-row flex-row">
+		<h2 class="head-div tasks-div"></h2>
+		<h4 class="head-div remaining-div"></h4>
     </div>
     <div class="border border-first"></div>
     <div class="actions" >
@@ -150,7 +150,7 @@ p1 .x-tasks,
     <div class="border border-second"></div>
 
     <div class="footer-flex">
-        <input class="cool-input" type="text" placeholder="" maxlength="40">
+        <input class="cool-input" type="text" placeholder="" maxlength="35">
         <button class="add-button" type="button">Add</button>
     </div>
 </div>
@@ -163,7 +163,6 @@ class ToDoList extends HTMLElement {
 		this.attachShadow({ mode: "open" });
 		this.shadowRoot.appendChild(template.content.cloneNode(true));
 		this.shadowRoot.querySelector("h1").innerHTML = this.getAttribute("titulo");
-		this.events = [];
 		this.counter = 0;
 		this.total_events = 0;
 		this.remaining_events = 0;
@@ -173,8 +172,9 @@ class ToDoList extends HTMLElement {
 
 		this.updateRemainingTasks();
 
-		this.shadowRoot.querySelector(".cool-input").placeholder =
-			this.getAttribute("promt");
+		this.shadowRoot.querySelector(
+			".cool-input"
+		).placeholder = this.getAttribute("promt");
 
 		this.shadowRoot
 			.querySelector(".add-button")
@@ -186,6 +186,7 @@ class ToDoList extends HTMLElement {
 			this.remaining_events -= 1;
 			this.updateRemainingTasks();
 		}
+		this.total_events -= 1;
 		this.updateTasks();
 		this.removeAttribute(item.name);
 		item.parentElement.remove();
@@ -260,7 +261,6 @@ class ToDoList extends HTMLElement {
 	addToDo(input) {
 		var input = this.shadowRoot.querySelector(".cool-input").value;
 		this.counter += 1;
-		console.log(input);
 
 		if (input != "") {
 			var frame = this.shadowRoot.querySelector(".actions");
